@@ -38,6 +38,7 @@ void signalHandler(int);//CTRL+c退出信号处理
 int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
 void ret_error(int);//翻译错误代码
+int command_main(string*,int&);//对接解释器的api
 
 /*
  * 函数定义
@@ -77,15 +78,15 @@ int shell()
 {
     // 返回值
     int ret=0;
-    int sig=1;//rewrite!
+    int sig=0;
     cout << PROGRAM_NAME << " " << PROGRAM_VERSION << " (" << PROGRAM_MODE << ", " << __DATE__ << ", " << __TIME__ << ")" << endl;
     cout << SHELL_START << endl;
-    while(sig)
+    while(sig==0)
     {
         cout << SHELL_IN;
         raise(SIGINT);
-        //getline(cin,command_buf);
-        //sig=command_main(command_buf);//发送给解释器并获取信号
+        getline(cin,command_buf);
+        sig=command_main(&command_buf,ret);//发送给解释器并获取信号
     }
     return ret;
 }
@@ -115,6 +116,10 @@ void ret_error(int ret)
             cout << ERROR_0x00000002 << endl;
     }
     return;
+}
+int command_main(string* buf,int& ret)
+{
+
 }
 
 /* 笔记 信号处理
