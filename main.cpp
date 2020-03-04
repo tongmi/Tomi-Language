@@ -30,11 +30,12 @@ using namespace std;
 //char *command=NULL;//执行语句   暂时弃用
 //int *command_int=NULL;//执行语句(INT)   暂时弃用
 string command_buf;//命令缓存
+expression expression;//解释器对象
 /*
  * 函数声明
  */
-int main(int,char**);//主函数
-void signalHandler(int);//CTRL+c退出信号处理
+int main(int,char**); //主函数
+void signalHandler(int) throw();//CTRL+c退出信号处理
 int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
 void ret_error(int);//翻译错误代码
@@ -66,7 +67,7 @@ int main(int argc,char *argv[])
     }
     return ret;
 }
-void signalHandler(int signum)
+void signalHandler(int signum) throw()
 {
     cout << "\nInterrupt signal (" << signum << ") received." << endl;
     cout << "Exit(" << signum << ")." << endl;
@@ -84,9 +85,9 @@ int shell()
     while(sig==0)
     {
         cout << SHELL_IN;
-        raise(SIGINT);
-        getline(cin,command_buf);
-        sig=command_main(&command_buf,ret);//发送给解释器并获取信号
+        //raise(SIGINT);
+        //getline(cin,command_buf);
+        sig=command_main(NULL,ret);//发送给解释器并获取信号
     }
     return ret;
 }
@@ -101,25 +102,29 @@ void ret_error(int ret)
         return;
     }else if(ret<0)
     {
-        cout << ERROR_0x00000002 << endl;
+        cout << endl << ERROR_0x00000002 << endl;
         return;
     }
     switch(ret)
     {
         case 1:
-            cout << ERROR_0x00000001 << endl;
+            cout << endl << ERROR_0x00000001 << endl;
             break;
         case 2:
-            cout << ERROR_0x00000002 << endl;
+            cout << endl << ERROR_0x00000002 << endl;
             break;
         default:
-            cout << ERROR_0x00000002 << endl;
+            cout << endl << ERROR_0x00000002 << endl;
     }
     return;
 }
 int command_main(string* buf,int& ret)
 {
-
+    if(buf==NULL)
+    {
+        ret=1;
+    }
+    return 1;
 }
 
 /* 笔记 信号处理
