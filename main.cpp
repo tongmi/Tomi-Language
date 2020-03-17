@@ -40,6 +40,7 @@ int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
 void ret_error(int);//翻译错误代码
 int command_main(string*,int&);//对接解释器的api
+int command_expression();//命令解析，放在expression.cpp文件
 
 /*
  * 函数定义
