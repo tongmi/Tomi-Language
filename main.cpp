@@ -30,7 +30,7 @@ using namespace std;
 //char *command=NULL;//执行语句   暂时弃用
 //int *command_int=NULL;//执行语句(INT)   暂时弃用
 string command_buf;//命令缓存
-expression expression;//解释器对象
+//expression expression;//解释器对象
 /*
  * 函数声明
  */
