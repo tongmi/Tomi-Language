@@ -39,8 +39,8 @@ void signalHandler(int) throw();//CTRL+c退出信号处理
 int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
 void ret_error(int);//翻译错误代码
-int command_main(string*,int&);//对接解释器的api
-int command_expression();//命令解析，放在expression.cpp文件
+int command_main(string*,int*);//对接解释器的api
+int command_expression(string*,int*);//命令解析，放在expression.cpp文件
 
 /*
  * 函数定义
@@ -87,8 +87,8 @@ int shell()
     {
         cout << SHELL_IN;
         //raise(SIGINT);
-        //getline(cin,command_buf);
-        sig=command_main(NULL,ret);//发送给解释器并获取信号
+        getline(cin,command_buf);
+        sig=command_main(*command_buf,ret);//发送给解释器并获取信号
     }
     return ret;
 }
@@ -119,13 +119,14 @@ void ret_error(int ret)
     }
     return;
 }
-int command_main(string* buf,int& ret)
+int command_main(string* buf,int* ret)
 {
     if(buf==NULL)
     {
         ret=1;
         return 1;
     }
+    return command_expression(buf,ret);
     
 }
 
