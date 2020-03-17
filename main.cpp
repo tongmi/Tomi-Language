@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
-#include "expression.h" //解释器头文件
+//#include "expression.h" //解释器头文件
 //#include "bufclass.h" //buf类 commandbuf公开变量  构造函数（行，最大字数）unsigned int参数 ， mode:true:启用中文支持（默认) 暂时弃用
 /*
  * 定义宏 (ABCDEFGHIJKLMNOPQRSTUVWXYZ)
