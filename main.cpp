@@ -123,8 +123,9 @@ int command_main(string* buf,int& ret)
     if(buf==NULL)
     {
         ret=1;
+        return 1;
     }
-    return 1;
+    
 }
 
 /* 笔记 信号处理
