@@ -11,8 +11,8 @@ int command_expression(string* buf,int* ret);//语法分析器
 int command_expression(string* buf,int* ret)
 {
     *ret=1;
-    const char *a=buf->data();
-    printf("%d    %s\n",strlen(a),a);
+    const char *com=buf->data();
+    
 
     return 1;
 }
