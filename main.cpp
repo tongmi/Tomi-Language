@@ -40,7 +40,7 @@ int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
 void ret_error(int);//翻译错误代码
 int command_main(string*,int*);//对接解释器的api
-int command_expression(string*,int*);//命令解析，放在expression.cpp文件
+extern int command_expression(string*,int*);//命令解析，放在expression.cpp文件
 
 /*
  * 函数定义
@@ -121,13 +121,13 @@ void ret_error(int ret)
 }
 int command_main(string* buf,int* ret)
 {
-    //if(buf==NULL)
-    //{
+    if(buf==NULL)
+    {
         *ret=1;
         cout << *buf<< endl;
         return 1;
-    //}
-    //return command_expression(buf,ret);
+    }
+    return command_expression(buf,ret);
     
 }
 
