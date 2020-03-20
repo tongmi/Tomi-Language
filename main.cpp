@@ -88,7 +88,7 @@ int shell()
         cout << SHELL_IN;
         //raise(SIGINT);
         getline(cin,command_buf);
-        sig=command_main(*command_buf,ret);//发送给解释器并获取信号
+        sig=command_main(&command_buf,&ret);//发送给解释器并获取信号
     }
     return ret;
 }
@@ -121,12 +121,13 @@ void ret_error(int ret)
 }
 int command_main(string* buf,int* ret)
 {
-    if(buf==NULL)
-    {
-        ret=1;
+    //if(buf==NULL)
+    //{
+        *ret=1;
+        cout << *buf<< endl;
         return 1;
-    }
-    return command_expression(buf,ret);
+    //}
+    //return command_expression(buf,ret);
     
 }
 
