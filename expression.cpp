@@ -12,13 +12,46 @@ int command_expression(string* buf,int* ret)
 {
     *ret=1;
     const char *com=buf->data();
-    char pbuf[strlen(com)+8];
+    char pbuf[strlen(com)+4];
+    /*while (1)//seatch " "
+    {
+        int ii=com;
+        while(1)
+        {
+            break;
+        }
+        break;
+    }*/
+    
+    char outpin[strlen(com)+2][strlen(com)+4];
+    int i=0;//参数个数
     FILE * test0=fopen(".tmp","w+");
     fputs(com,test0);
     fclose(test0);
+
+
     FILE * test1=fopen(".tmp","r+");
-    fscanf(test1,"%s",pbuf);
-    cout << pbuf ;
+
+    
+    while(fscanf(test1,"%s",pbuf)==1)
+    {
+        i++;
+        strcat(outpin[i-1],pbuf);
+    }
+    while(i>1)
+    {
+        i--;
+        printf("%s\n",outpin[i]);
+
+
+    }
+    fclose(test1);
     system("rm .tmp");
+    /*
+     *
+     * 下面语法解析了，outpi开始
+     */
+
+ 
     return 1;
 }
