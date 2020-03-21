@@ -16,6 +16,7 @@
 #define PROGRAM_MODE "default"
 #define PROGRAM_NAME "Tomi"
 #define PROGRAM_VERSION "0.0.0.1-test"
+#define SHELL_FUN "..."
 #define SHELL_IN ">>>"
 #define SHELL_START "Type \"help\" for more information."
 /*
