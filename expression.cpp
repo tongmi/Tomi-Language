@@ -12,13 +12,13 @@ int command_expression(string* buf,int* ret)
 {
     *ret=1;
     const char *com=buf->data();
-    char pbuf[100];
+    char pbuf[strlen(com)+8];
     FILE * test0=fopen(".tmp","w+");
     fputs(com,test0);
     fclose(test0);
     FILE * test1=fopen(".tmp","r+");
     fscanf(test1,"%s",pbuf);
-    cout << pbuf << endl;
+    cout << pbuf ;
     system("rm .tmp");
     return 1;
 }
