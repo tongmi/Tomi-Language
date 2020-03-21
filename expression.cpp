@@ -22,7 +22,6 @@ int command_expression(string* buf,int* ret)
         }
         break;
     }*/
-    
     char outpin[strlen(com)+2][strlen(com)+4];
     int i=0;//参数个数
     FILE * test0=fopen(".tmp","w+");
