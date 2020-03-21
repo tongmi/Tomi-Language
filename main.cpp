@@ -13,6 +13,7 @@
  */
 #define ERROR_0x00000001 "ERROR:Abnormal exit.(0x00000001)" //异常退出
 #define ERROR_0x00000002 "ERROR:Unknow errors.(0x00000002)" //未知的错误
+#define PROGARM_DEBUG 0
 #define PROGRAM_MODE "default"
 #define PROGRAM_NAME "Tomi"
 #define PROGRAM_VERSION "0.0.0.1-test"
