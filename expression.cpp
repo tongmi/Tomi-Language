@@ -49,7 +49,7 @@ int command_expression(string* buf,int* ret)
     system("rm .tmp");
     /*
      *
-     * 下面语法解析了，outpi开始
+     * 下面语法解析了，outpin开始
      */
 
  
