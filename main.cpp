@@ -40,7 +40,7 @@ int main(int,char**); //主函数
 void signalHandler(int) throw();//CTRL+c退出信号处理
 int shell();//shell用户交互编程
 int shell(char*);//解释文件预处理
-void ret_error(int);//翻译错误代码
+void ret_error(int) throw();//翻译错误代码
 int command_main(string*,int*);//对接解释器的api
 extern int command_expression(string*,int*);//命令解析，放在expression.cpp文件
 
@@ -98,7 +98,7 @@ int shell(const char *filename)
 {
 //wait 1.
 }
-void ret_error(int ret)
+void ret_error(int ret) throw()
 {
     if(ret==0)
     {
