@@ -61,7 +61,7 @@ int main(int argc,char *argv[])
         int num=argc-1; 
         if(num<=0)
         {
-            cout << ERROR_0x00000002 << endl;
+            error_out(ERROR_0x00000002);
             return 2;
         }else{
             //有文件
@@ -76,6 +76,7 @@ int main(int argc,char *argv[])
 }
 void signalHandler(int signum) throw()
 {
+    //可以不用去掉cout
     cout << "\nInterrupt signal (" << signum << ") received." << endl;
     cout << "Exit(" << signum << ")." << endl;
     // 清理并关闭
@@ -84,7 +85,7 @@ void signalHandler(int signum) throw()
 }
 int shell() throw()
 {
-    // 返回值
+    // 返回值 canoot rm cout
     int ret=0;
     int sig=0;
     cout << PROGRAM_NAME << " " << PROGRAM_VERSION << " (" << PROGRAM_MODE << ", " << __DATE__ << ", " << __TIME__ << ")" << endl;
@@ -132,26 +133,26 @@ void ret_error(int ret) throw()
         return;
     }else if(ret==857)
     {
-        cout << endl << "Debug exit." << endl;
+        error_out("DEBUG EXIT.");
     }else if(ret<0)
     {
-        cout << endl << ERROR_0x00000002 << endl;
+        error_out(ERROR_0x00000002);
         return;
     }
     switch(ret)
     {
         case 1:
-            cout << endl << ERROR_0x00000001 << endl;
+            error_out(ERROR_0x00000001);
             break;
         case 2:
-            cout << endl << ERROR_0x00000002 << endl;
+            error_out(ERROR_0x00000002);
             break;
         default:
             if(ret==857)
             {
                 return;
             }
-            cout << endl << ERROR_0x00000002 << endl;
+            error_out(ERROR_0x00000002);
             break;
     }
     return;
@@ -161,7 +162,7 @@ int command_main(string* buf,int* ret) throw()
     if(buf==NULL)
     {
         *ret=1;
-        cout << *buf<< endl;
+        //cout << *buf<< endl;
         return 1;
     }
     return command_expression(buf,ret);

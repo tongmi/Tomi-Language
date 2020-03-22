@@ -20,4 +20,6 @@ extern void info(std::string) throw();
 extern void debug_api(bool tmp) throw();
 //debug info
 extern void debug_info(std::string) throw();
+//error out
+void error_out(std::string) throw();
 

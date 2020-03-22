@@ -65,7 +65,7 @@ int command_expression(string* bbuf,int* ret) throw()
     delete [] pbuf;
     if(remove(".tmp")==EOF)
     {
-        cout << "Cannot delete .tmp."<<endl;
+        //wait
     }
     //system("rm .tmp");
     //rmtmp();
