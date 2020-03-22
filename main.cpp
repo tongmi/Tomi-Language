@@ -116,6 +116,9 @@ int shell() throw()
         }else if(sig==0)
         {
             //N
+        }else if(sig==2)
+        {
+            sig=1;
         }else
         {
             break;

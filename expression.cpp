@@ -66,7 +66,7 @@ int command_expression(string* bbuf,int* ret) throw()
     delete [] pbuf;
     if(remove(".tmp")==EOF)
     {
-        //wait
+        compile_out("Connot delete .tmp.");
     }
     //system("rm .tmp");
     //rmtmp();
@@ -193,8 +193,15 @@ int explanation(char ** command,int* proret) throw()
 
     if(ret==857)
     {
+        if(funmode==1)
+        {
+            ret=2;
+        }else
+        {
+
         ret=0;
         compile_out("The command not found.");
+        }
     }
 
     return ret;
