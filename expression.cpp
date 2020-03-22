@@ -61,7 +61,7 @@ int command_expression(string* bbuf,int* ret)
         cout <<"yes"<<endl;
     }
  
-    return 1;
+    return 857;
 }
 char* writetmp(string * buf)
 {

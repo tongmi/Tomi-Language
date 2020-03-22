@@ -39,7 +39,7 @@ string command_buf;//命令缓存
 int main(int,char**); //主函数
 void signalHandler(int) throw();//CTRL+c退出信号处理
 int shell();//shell用户交互编程
-int shell(char*);//解释文件预处理
+int shell(const char*);//解释文件预处理
 void ret_error(int) throw();//翻译错误代码
 int command_main(string*,int*);//对接解释器的api
 extern int command_expression(string*,int*);//命令解析，放在expression.cpp文件
@@ -65,7 +65,12 @@ int main(int argc,char *argv[])
             cout << ERROR_0x00000002 << endl;
             return 2;
         }else{
-            shell(argv[num]);
+            //有文件
+            ret=shell(argv[num]);
+            if(ret!=0)
+            {
+                ret_error(ret);
+            }
         }
     }
     return ret;
@@ -85,18 +90,41 @@ int shell()
     int sig=0;
     cout << PROGRAM_NAME << " " << PROGRAM_VERSION << " (" << PROGRAM_MODE << ", " << __DATE__ << ", " << __TIME__ << ")" << endl;
     cout << SHELL_START << endl;
-    while(sig==0)
+    while(1)
     {
-        cout << SHELL_IN;
+        //正常：0/1/                 -1
+        if(sig==1)
+        {
+            cout << SHELL_FUN;
+        }else{
+            cout << SHELL_IN;
+        }
+        
         //raise(SIGINT);
         getline(cin,command_buf);
         sig=command_main(&command_buf,&ret);//发送给解释器并获取信号
+        if(sig==1)
+        {
+            //break;
+        }else if(sig==0)
+        {
+            //N
+        }else
+        {
+            break;
+        }
     }
     return ret;
 }
 int shell(const char *filename)
 {
 //wait 1.
+    FILE * tomi=NULL;
+    tomi=fopen(filename,"r");
+    if(tomi==NULL)
+    {
+        return 2;
+    }
 }
 void ret_error(int ret) throw()
 {
