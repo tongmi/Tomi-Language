@@ -7,7 +7,7 @@
 #include "public.h"
 using namespace std;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
-
+int inum=0;//参数个数
 //语法分析器
 int command_expression(string* buf,int* ret) throw();
 //写临时文件
@@ -15,13 +15,13 @@ char* writetmp(string*) throw();
 //获取宽度
 size_t writetmp1(string *) throw();
 //解释器
-int explanation(char**,int) throw();
+int explanation(char**) throw();
 //delete .tmp
 //void rmtmp();
 
 int command_expression(string* bbuf,int* ret) throw()
 {
-    *ret=1;//记得改！！！！！
+    *ret=857;//记得改！！！！！
     /*if(os==0)
     {
         cout<<"TOMI:The program is runing in linux!"<<endl;
@@ -37,7 +37,7 @@ int command_expression(string* bbuf,int* ret) throw()
         break;
     }*/
     char outpin[(size_t)writetmp1(bbuf)+2][(size_t)writetmp1(bbuf)+4];
-    int i=0;//参数个数
+ 
     if (writetmp(bbuf)==NULL)
     {
         return 2;
@@ -49,16 +49,18 @@ int command_expression(string* bbuf,int* ret) throw()
     
     while(fscanf(test1,"%s",pbuf)==1)
     {
-        i++;
-        strcpy(outpin[i-1],pbuf);
+        inum++;
+        strcpy(outpin[inum-1],pbuf);
     }
-    while(i>1)
+    int copyi=inum;
+    while(inum>1)
     {
-        i--;
-        printf("%s\n",outpin[i]);
+        inum--;
+        printf("%s\n",outpin[inum]);
 
 
     }
+    inum=copyi;
     fclose(test1);
     delete [] pbuf;
     if(remove(".tmp")==EOF)
@@ -68,6 +70,15 @@ int command_expression(string* bbuf,int* ret) throw()
     //system("rm .tmp");
     //rmtmp();
     //rmdir
+    char * pingmu[inum];
+    for (int i = 0; i < inum; i++)
+    {
+        /* code */
+        //int rrr=inum-i;
+        pingmu[i]=outpin[i];
+    }
+    
+    //inum=copyi;
     /*
      *
      * 下面语法解析了，outpin开始
@@ -77,7 +88,7 @@ int command_expression(string* bbuf,int* ret) throw()
         cout <<"DEBUG:yes"<<endl;
     }
  
-    return explanation(outpin,i);
+    return explanation(pingmu);
 }
 char* writetmp(string * buf) throw()
 {
@@ -102,13 +113,15 @@ size_t writetmp1(string * buf) throw()
     return (size_t)strlen(com);
 
 }
-int explanation(char ** command,int numi) throw()
+int explanation(char ** command) throw()
 {
-    switch (command[0])
+    cout << command[0];
+    /*switch (command[0])
     {
         case :
 
         default:
             break;
-    }
+    }*/
+    return -1;
 }

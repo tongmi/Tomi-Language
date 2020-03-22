@@ -47,6 +47,7 @@ extern int command_expression(string*,int*) throw();//命令解析，放在expre
 int main(int argc,char *argv[])
 {
     signal(SIGINT, signalHandler);  //注册信号和退出函数 CTRL+c的退出
+    debug_api(PROGARM_DEBUG);
     int ret=0;
     ifsystem();
     if(argc==1)
@@ -129,6 +130,9 @@ void ret_error(int ret) throw()
     if(ret==0)
     {
         return;
+    }else if(ret==857)
+    {
+        cout << endl << "Debug exit." << endl;
     }else if(ret<0)
     {
         cout << endl << ERROR_0x00000002 << endl;
@@ -143,7 +147,12 @@ void ret_error(int ret) throw()
             cout << endl << ERROR_0x00000002 << endl;
             break;
         default:
+            if(ret==857)
+            {
+                return;
+            }
             cout << endl << ERROR_0x00000002 << endl;
+            break;
     }
     return;
 }
