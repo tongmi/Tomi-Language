@@ -1,1 +1,1 @@
-g++ *.cpp -o tomilang
+compile g++ *.cpp -o tomilang
