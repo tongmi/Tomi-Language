@@ -1,1 +1,1 @@
-g++ *.cpp -o tomilang
+g++ *.cpp -o tomilang.exe
