@@ -118,7 +118,7 @@ int explanation(char ** command,int* proret) throw()
 {
     //cout << command[0];
     int ret=857;
-    int funmode=0;
+    static int funmode=0;
     /*switch (command[0])
     {
         case help:
