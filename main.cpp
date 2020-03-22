@@ -65,7 +65,7 @@ int main(int argc,char *argv[])
             cout << ERROR_0x00000002 << endl;
             return 2;
         }else{
-            //处理有文件及代码
+            shell(argv[num]);
         }
     }
     return ret;
