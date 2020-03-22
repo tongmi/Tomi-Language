@@ -15,12 +15,13 @@ char* writetmp(string*) throw();
 //获取宽度
 size_t writetmp1(string *) throw();
 //解释器
-int explanation(char**) throw();
+int explanation(char**,int*) throw();
 //delete .tmp
 //void rmtmp();
 
 int command_expression(string* bbuf,int* ret) throw()
 {
+    inum=0;
     *ret=857;//记得改！！！！！
     /*if(os==0)
     {
@@ -53,13 +54,13 @@ int command_expression(string* bbuf,int* ret) throw()
         strcpy(outpin[inum-1],pbuf);
     }
     int copyi=inum;
-    while(inum>1)
+    /*while(inum>1)
     {
         inum--;
         printf("%s\n",outpin[inum]);
 
 
-    }
+    }*/
     inum=copyi;
     fclose(test1);
     delete [] pbuf;
@@ -88,7 +89,7 @@ int command_expression(string* bbuf,int* ret) throw()
         cout <<"DEBUG:yes"<<endl;
     }
  
-    return explanation(pingmu);
+    return explanation(pingmu,ret);
 }
 char* writetmp(string * buf) throw()
 {
@@ -113,15 +114,88 @@ size_t writetmp1(string * buf) throw()
     return (size_t)strlen(com);
 
 }
-int explanation(char ** command) throw()
+int explanation(char ** command,int* proret) throw()
 {
-    cout << command[0];
+    //cout << command[0];
+    int ret=857;
+    int funmode=0;
     /*switch (command[0])
     {
-        case :
-
+        case help:
+            compile_out("Help :eeeeeeee还没想好");
+            break;
+        case exit:
+            ret=-1;
+            break;
+        case fun:
+            ret=1;
+            break;
         default:
+            compile_out("The command not found.");
             break;
     }*/
-    return -1;
+    /*
+     * 模板
+     * if(strcmp(command[0],"")==0)
+    {
+                if(funmode==0)
+        {
+            ret=0;
+        }
+        ret=;
+    }
+     */
+    if(strcmp(command[0],"help")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        compile_out("Help :eeeeeeee还没想好");
+    }
+    if(strcmp(command[0],"exit")==0)
+    {
+        *proret=0;
+        ret=-1;
+    }
+    if(strcmp(command[0],"fun")==0)
+    {
+        funmode=1;
+        ret=1;
+    }
+    if(strcmp(command[0],"endfun")==0)
+    {
+        funmode=0;
+        ret=0;
+    }
+    if(strcmp(command[0],"update_logs")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        compile_out("update_logs :eeeeeeee还没想好");
+    }
+    if(strcmp(command[0],"echo")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        //还要写
+        compile_out(command[1]);
+    }
+
+
+
+
+
+
+    if(ret==857)
+    {
+        ret=0;
+        compile_out("The command not found.");
+    }
+
+    return ret;
 }

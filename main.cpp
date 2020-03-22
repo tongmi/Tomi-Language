@@ -56,6 +56,9 @@ int main(int argc,char *argv[])
         if(ret!=0)
         {
             ret_error(ret);
+        }else
+        {
+            compile_out("Program exit.");
         }
     }else{//wait 1
         int num=argc-1; 
@@ -99,9 +102,13 @@ int shell() throw()
         }else{
             cout << SHELL_IN;
         }
-        
+        //command_buf="";
         //raise(SIGINT);
         getline(cin,command_buf);
+        if(command_buf.empty())
+        {
+            continue;
+        }
         sig=command_main(&command_buf,&ret);//发送给解释器并获取信号
         if(sig==1)
         {

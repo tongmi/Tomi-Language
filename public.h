@@ -13,7 +13,7 @@ extern int os;
 //input in
 #define SHELL_IN ">>>"
 //information for start
-#define SHELL_START "Type \"help\" or \"update_log\" for more information."
+#define SHELL_START "Type \"help\" or \"update_logs\" for more information."
 //info out
 extern void info(std::string) throw();
 //debug api
@@ -22,4 +22,18 @@ extern void debug_api(bool tmp) throw();
 extern void debug_info(std::string) throw();
 //error out
 void error_out(std::string) throw();
+//cout
+extern void compile_out(std::string) throw();
+
+
+
+
+
+
+
+
+
+
+
+
 
