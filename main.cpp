@@ -6,20 +6,14 @@
 #include <unistd.h>
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
+#include "public.h"
 //#include "expression.h" //解释器头文件
-//#include "bufclass.h" //buf类 commandbuf公开变量  构造函数（行，最大字数）unsigned int参数 ， mode:true:启用中文支持（默认) 暂时弃用
+//#include "bufclass.h" //buf类 commandbuf公开变量  构造函数（行，最大字数）unsigned int参数 ， mode:true:启用中文支持（默认) 暂时弃用 esco
 /*
  * 定义宏 (ABCDEFGHIJKLMNOPQRSTUVWXYZ)
  */
 #define ERROR_0x00000001 "ERROR:Abnormal exit.(0x00000001)" //异常退出
 #define ERROR_0x00000002 "ERROR:Unknow errors.(0x00000002)" //未知的错误
-#define PROGARM_DEBUG false
-#define PROGRAM_MODE "default"
-#define PROGRAM_NAME "Tomi"
-#define PROGRAM_VERSION "0.0.0.1-test"
-#define SHELL_FUN "..."
-#define SHELL_IN ">>>"
-#define SHELL_START "Type \"help\" for more information."
 /*
  * 命名空间（创建与使用）
  */
@@ -32,25 +26,29 @@ using namespace std;
 //char *command=NULL;//执行语句   暂时弃用
 //int *command_int=NULL;//执行语句(INT)   暂时弃用
 string command_buf;//命令缓存
+int os=-1;//-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 //expression expression;//解释器对象
 /*
  * 函数声明
  */
 int main(int,char**); //主函数
 void signalHandler(int) throw();//CTRL+c退出信号处理
-int shell();//shell用户交互编程
-int shell(const char*);//解释文件预处理
+int shell() throw();//shell用户交互编程
+int shell(const char*) throw();//解释文件预处理
 void ret_error(int) throw();//翻译错误代码
-int command_main(string*,int*);//对接解释器的api
-extern int command_expression(string*,int*);//命令解析，放在expression.cpp文件
+int command_main(string*,int*) throw();//对接解释器的api
+int ifsystem() throw();//判断操作系统
+extern int command_expression(string*,int*) throw();//命令解析，放在expression.cpp文件
+
 
 /*
  * 函数定义
  */
 int main(int argc,char *argv[])
 {
-    int ret;
     signal(SIGINT, signalHandler);  //注册信号和退出函数 CTRL+c的退出
+    int ret=0;
+    ifsystem();
     if(argc==1)
     {
         ret=shell();
@@ -83,7 +81,7 @@ void signalHandler(int signum) throw()
     // 终止程序  
     exit(signum);  
 }
-int shell()
+int shell() throw()
 {
     // 返回值
     int ret=0;
@@ -116,7 +114,7 @@ int shell()
     }
     return ret;
 }
-int shell(const char *filename)
+int shell(const char *filename) throw()
 {
 //wait 1.
     FILE * tomi=NULL;
@@ -149,7 +147,7 @@ void ret_error(int ret) throw()
     }
     return;
 }
-int command_main(string* buf,int* ret)
+int command_main(string* buf,int* ret) throw()
 {
     if(buf==NULL)
     {
@@ -160,7 +158,51 @@ int command_main(string* buf,int* ret)
     return command_expression(buf,ret);
     
 }
+//-1 is unkonws os  0 is linux , 1 is unix , 2 is windows ,3 is win32
+int ifsystem() throw()
+{
 
+ 
+    #ifdef linux
+ 
+       os=0;
+ 
+       info("TOMI:The program is runing in linux!");
+ 
+    #endif
+ 
+    #ifdef _UNIX
+ 
+       os=1;
+ 
+       info("TOMI:The program is runing in unix!");
+ 
+    #endif
+ 
+    #ifdef __WINDOWS_
+ 
+       os=2;
+ 
+       info("TOMI:The program is runing in windows!");
+ 
+    #endif
+ 
+    #ifdef _WIN32
+ 
+       os=3;
+ 
+       info("TOMI:The program is runing in win32!");
+ 
+    #endif
+    if(-1==os){
+ 
+        info("TOMI:No OS Defined ,I do not know what the os is!");
+ 
+    }
+ 
+    return 0;
+
+}
 /* 笔记 信号处理
  * SIGABRT	程序的异常终止，如调用 abort。
  * SIGFPE	错误的算术运算，比如除以零或导致溢出的操作。

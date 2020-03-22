@@ -4,18 +4,28 @@
 #include <unistd.h>
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
+#include "public.h"
 using namespace std;
+//-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
+
 //语法分析器
-int command_expression(string* buf,int* ret);
+int command_expression(string* buf,int* ret) throw();
 //写临时文件
-char* writetmp(string*);
+char* writetmp(string*) throw();
 //获取宽度
-size_t writetmp1(string *);
+size_t writetmp1(string *) throw();
+//解释器
+int explanation(char**,int) throw();
+//delete .tmp
+//void rmtmp();
 
-
-int command_expression(string* bbuf,int* ret)
+int command_expression(string* bbuf,int* ret) throw()
 {
-    *ret=1;
+    *ret=1;//记得改！！！！！
+    /*if(os==0)
+    {
+        cout<<"TOMI:The program is runing in linux!"<<endl;
+    }*/
     char *pbuf=new char[(size_t)writetmp1(bbuf)+4];
     /*while (1)//seatch " "
     {
@@ -51,19 +61,25 @@ int command_expression(string* bbuf,int* ret)
     }
     fclose(test1);
     delete [] pbuf;
-    system("rm .tmp");
+    if(remove(".tmp")==EOF)
+    {
+        cout << "Cannot delete .tmp."<<endl;
+    }
+    //system("rm .tmp");
+    //rmtmp();
+    //rmdir
     /*
      *
      * 下面语法解析了，outpin开始
      */
     if (outpin[0][2]=='\0')
     {
-        cout <<"yes"<<endl;
+        cout <<"DEBUG:yes"<<endl;
     }
  
-    return 857;
+    return explanation(outpin,i);
 }
-char* writetmp(string * buf)
+char* writetmp(string * buf) throw()
 {
     const char *com=buf->data();
     /*if(mode==2)
@@ -80,9 +96,19 @@ char* writetmp(string * buf)
     fclose(test0);
     return (char*)0x11;
 }
-size_t writetmp1(string * buf)
+size_t writetmp1(string * buf) throw()
 {
     const char *com=buf->data();
     return (size_t)strlen(com);
 
+}
+int explanation(char ** command,int numi) throw()
+{
+    switch (command[0])
+    {
+        case :
+
+        default:
+            break;
+    }
 }
