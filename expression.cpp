@@ -7,13 +7,16 @@
 using namespace std;
 //语法分析器
 int command_expression(string* buf,int* ret);
+//写临时文件
+char* writetmp(string*);
+//获取宽度
+size_t writetmp1(string *);
 
 
-int command_expression(string* buf,int* ret)
+int command_expression(string* bbuf,int* ret)
 {
     *ret=1;
-    const char *com=buf->data();
-    char pbuf[strlen(com)+4];
+    char *pbuf=new char[(size_t)writetmp1(bbuf)+4];
     /*while (1)//seatch " "
     {
         int ii=com;
@@ -23,11 +26,12 @@ int command_expression(string* buf,int* ret)
         }
         break;
     }*/
-    char outpin[strlen(com)+2][strlen(com)+4];
+    char outpin[(size_t)writetmp1(bbuf)+2][(size_t)writetmp1(bbuf)+4];
     int i=0;//参数个数
-    FILE * test0=fopen(".tmp","w+");
-    fputs(com,test0);
-    fclose(test0);
+    if (writetmp(bbuf)==NULL)
+    {
+        return 2;
+    }
 
 
     FILE * test1=fopen(".tmp","r+");
@@ -36,7 +40,7 @@ int command_expression(string* buf,int* ret)
     while(fscanf(test1,"%s",pbuf)==1)
     {
         i++;
-        strcat(outpin[i-1],pbuf);
+        strcpy(outpin[i-1],pbuf);
     }
     while(i>1)
     {
@@ -54,4 +58,27 @@ int command_expression(string* buf,int* ret)
 
  
     return 1;
+}
+char* writetmp(string * buf)
+{
+    const char *com=buf->data();
+    /*if(mode==2)
+    {
+        return (size_t)strlen(com);
+    }*/
+    FILE * test0=NULL;
+    test0=fopen(".tmp","w+");
+    if(test0==NULL)
+    {
+        return NULL;
+    }
+    fputs(com,test0);
+    fclose(test0);
+    return (char*)0x11;
+}
+size_t writetmp1(string * buf)
+{
+    const char *com=buf->data();
+    return (size_t)strlen(com);
+
 }
