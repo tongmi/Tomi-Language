@@ -50,6 +50,7 @@ int command_expression(string* bbuf,int* ret)
 
     }
     fclose(test1);
+    delete [] pbuf;
     system("rm .tmp");
     /*
      *
