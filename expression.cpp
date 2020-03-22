@@ -33,7 +33,7 @@ int command_expression(string* bbuf,int* ret)
         return 2;
     }
 
-
+    //read .tmp
     FILE * test1=fopen(".tmp","r+");
 
     
@@ -55,7 +55,10 @@ int command_expression(string* bbuf,int* ret)
      *
      * 下面语法解析了，outpin开始
      */
-
+    if (outpin[0][2]=='\0')
+    {
+        cout <<"yes"<<endl;
+    }
  
     return 1;
 }
