@@ -38,7 +38,7 @@ int command_expression(string* bbuf,int* ret) throw()
         break;
     }*/
     char outpin[(size_t)writetmp1(bbuf)+2][(size_t)writetmp1(bbuf)+4];
- 
+    ///////////////////////////////////////////
     if (writetmp(bbuf)==NULL)
     {
         return 2;
@@ -68,6 +68,7 @@ int command_expression(string* bbuf,int* ret) throw()
     {
         compile_out("Connot delete .tmp.");
     }
+    ///////////////////////////////////////////////////////////////////////
     //system("rm .tmp");
     //rmtmp();
     //rmdir

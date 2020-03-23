@@ -19,7 +19,7 @@ void debug_info(std::string tmp) throw()
     {
         return;
     }
-    std::cout<<"DEBUG:"<<tmp<<std::endl;
+    std::clog<<"DEBUG:"<<tmp<<std::endl;
 }
 
 
@@ -28,7 +28,7 @@ int if_debug() throw()
 {
     if(debug!=true)
     {
-        info("Debug mode was not runing.");
+        error_out("Debug mode was not runing.");
         return -1;
     }
     return 0;

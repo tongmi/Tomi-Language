@@ -1,7 +1,7 @@
 //Information for systemos
 extern int os;
 //debug mode
-#define PROGARM_DEBUG false
+#define PROGARM_DEBUG true
 //progarm mod
 #define PROGRAM_MODE "default"
 //progarm name

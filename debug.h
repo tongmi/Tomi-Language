@@ -1,4 +1,4 @@
 #include <iostream>
 #include <string>
 //info out
-extern void info(std::string) throw();
+extern void error_out(std::string) throw();
