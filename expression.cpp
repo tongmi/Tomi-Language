@@ -195,6 +195,7 @@ int explanation(char ** command,int* proret) throw()
     {
         if(funmode==1)
         {
+            compile_out("The command not found.");
             ret=2;
         }else
         {
