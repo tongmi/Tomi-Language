@@ -81,8 +81,12 @@ int main_tomi(int argc,char *argv[]) throw()
 void signalHandler(int signum) throw()
 {
     //可以不用去掉cout
+
+
     cout << "\nInterrupt signal (" << signum << ") received." << endl;
     cout << "Exit(" << signum << ")." << endl;
+
+
     // 清理并关闭
     // 终止程序  
     exit(signum);  
@@ -92,16 +96,28 @@ int shell() throw()
     // 返回值 canoot rm cout
     int ret=0;
     int sig=0;
+
+
     cout << PROGRAM_NAME << " " << PROGRAM_VERSION << " (" << PROGRAM_MODE << ", " << __DATE__ << ", " << __TIME__ << ")" << endl;
     cout << SHELL_START << endl;
+
+
     while(1)
     {
         //正常：0/1/                 -1
         if(sig==1)
         {
+
+
             cout << SHELL_FUN;
+
+
         }else{
+
+
             cout << SHELL_IN;
+            
+
         }
         //command_buf="";
         //raise(SIGINT);
@@ -188,7 +204,7 @@ int ifsystem() throw()
  
        os=0;
  
-       info("TOMI:The program is runing in linux!");
+       info("The program is running in linux!");
  
     #endif
  
@@ -196,7 +212,7 @@ int ifsystem() throw()
  
        os=1;
  
-       info("TOMI:The program is runing in unix!");
+       info("The program is running in unix!");
  
     #endif
  
@@ -204,7 +220,7 @@ int ifsystem() throw()
  
        os=2;
  
-       info("TOMI:The program is runing in windows!");
+       info("The program is running in windows!");
  
     #endif
  
@@ -212,12 +228,12 @@ int ifsystem() throw()
  
        os=3;
  
-       info("TOMI:The program is runing in win32!");
+       info("The program is running in win32!");
  
     #endif
     if(-1==os){
  
-        info("TOMI:No OS Defined ,I do not know what the os is!");
+        info("No OS Defined ,I do not know what the os is!");
  
     }
  
