@@ -1,7 +1,7 @@
 //Information for systemos
 extern int os;
 //debug mode
-#define PROGARM_DEBUG true
+#define PROGARM_DEBUG false
 //progarm mod
 #define PROGRAM_MODE "default"
 //progarm name
@@ -20,10 +20,17 @@ extern void info(std::string) throw();
 extern void debug_api(bool tmp) throw();
 //debug info
 extern void debug_info(std::string) throw();
+extern void debug_info(int) throw();
 //error out
 void error_out(std::string) throw();
 //cout
-extern void compile_out(std::string) throw();
+extern void compile_out(std::string,int) throw();
+//com num
+extern size_t inum;
+//warning info
+extern void warning(std::string) throw();
+//command_out
+extern void command_out(char * str,std::string str_1) throw();
 
 
 

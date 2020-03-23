@@ -49,6 +49,11 @@ int main_tomi(int argc,char *argv[]) throw()
     //cout << argv[1]<<endl;
     signal(SIGINT, signalHandler);  //注册信号和退出函数 CTRL+c的退出
     debug_api(PROGARM_DEBUG);
+
+
+    debug_info(argv[0]);
+
+
     int ret=0;
     ifsystem();
     if(argc==1)
@@ -59,7 +64,7 @@ int main_tomi(int argc,char *argv[]) throw()
             ret_error(ret);
         }else
         {
-            compile_out("Program exit.");
+            compile_out("Program exit.",0);
         }
     }else{//wait 1
         int num=argc-1; 

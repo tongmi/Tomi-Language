@@ -3,5 +3,5 @@ void error_out(std::string) throw();
 
 void error_out(std::string err) throw()
 {
-    std::cerr<<std::endl<<"ERROR:"<<err<<std::endl;
+    std::cerr<<std::endl<<"ERROR: "<<err<<std::endl;
 }
