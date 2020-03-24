@@ -9,9 +9,9 @@ extern int os;
 //program version
 #define PROGRAM_VERSION "0.0.0.1-test0"
 //input fun
-#define SHELL_FUN "..."
+#define SHELL_FUN "... "
 //input in
-#define SHELL_IN ">>>"
+#define SHELL_IN ">>> "
 //information for start
 #define SHELL_START "Type \"help\" or \"update_logs\" for more information."
 //info out
