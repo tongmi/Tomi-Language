@@ -22,7 +22,7 @@ extern void debug_api(bool tmp) throw();
 extern void debug_info(std::string) throw();
 extern void debug_info(int) throw();
 //error out
-void error_out(std::string) throw();
+extern void error_out(std::string) throw();
 //cout
 extern void compile_out(std::string,int) throw();
 //com num
