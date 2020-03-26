@@ -8,6 +8,7 @@
 using namespace std;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 size_t inum=0;//参数个数
+size_t com_length=0;
 //语法分析器
 int command_expression(string* buf,int* ret) throw();
 /*
@@ -35,6 +36,7 @@ int command_expression(string* bbuf,int* ret) throw()
     int last_space=-1;
     const char *com=bbuf->data();
     char *str =new char[strlen(com)+1];//缓存
+    com_length=strlen(com)+1;
     strcpy(str,com);
     if(str[0]==' ')
     {
@@ -178,6 +180,27 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
         command_out(command[0],"NULL");
+    }
+    if(strcmp(command[0],"compile")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        char compile_buf[com_length+inum];
+        for (size_t i = 1; i <= inum-1 ; i++)
+        {
+            if(i==1)
+            {
+                strcpy(compile_buf,"\0");
+            }else
+            {
+                strcat(compile_buf," ");
+            }
+            strcat(compile_buf,command[i]);
+        }
+        system(compile_buf);
+
     }
     if(strcmp(command[0],"echo")==0)
     {

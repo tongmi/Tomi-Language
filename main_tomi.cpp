@@ -4,6 +4,8 @@
 #include <iostream>
 #include <csignal>
 #include <unistd.h>
+#include <stdlib.h>
+#include <cstring>
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
 #include "public.h"
@@ -151,12 +153,62 @@ int shell() throw()
 int shell(const char *filename) throw()
 {
 //wait 1.
+    char shell_buf_c=0;
+    size_t shell_buf_s_size=4;
+    
+
     FILE * tomi=NULL;
+    int reet=0;
     tomi=fopen(filename,"r");
     if(tomi==NULL)
     {
         return 2;
     }
+    while (1)
+    {
+        int sig_ret=0;
+        shell_buf_s_size=4;
+        char *shell_buf_s=(char*)malloc(2);
+        strcpy(shell_buf_s,"\0");
+        while (1)
+        {
+            if(fscanf(tomi,"%c",&shell_buf_c)==-1)
+            {
+                strcat(shell_buf_s,"\0");
+                sig_ret=-1;
+                string cbuf=shell_buf_s;
+                command_main(&cbuf,&reet);
+                //ret_error(ret);
+                break;
+            }
+            if(shell_buf_c=='\n')
+            {
+                strcat(shell_buf_s,"\0");
+                string ccbuf=shell_buf_s;
+                if(ccbuf=="\0")
+                {
+                    break;
+                }
+                command_main(&ccbuf,&reet);
+                //ret_error(ret);
+                break;
+            }
+            shell_buf_s_size++;
+            shell_buf_s=(char*)realloc(shell_buf_s,shell_buf_s_size);
+            char shell_while_buf[2];
+            shell_while_buf[0]=shell_buf_c;
+            shell_while_buf[1]='\0';
+            strcat(shell_buf_s,shell_while_buf);
+            
+        }
+        free(shell_buf_s);
+        if(sig_ret==-1)
+        {
+            break;
+        }
+    }
+    return reet;
+
 }
 void ret_error(int ret) throw()
 {
@@ -165,7 +217,7 @@ void ret_error(int ret) throw()
         return;
     }else if(ret==857)
     {
-        error_out("DEBUG EXIT.");
+        error_out("ERROR EXIT.");
     }else if(ret<0)
     {
         error_out(ERROR_0x00000002);

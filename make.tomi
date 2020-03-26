@@ -1,2 +1,5 @@
 compile g++ *.cpp -o tomilang
 echo Compiled.
+echo ni
+echo 你好
+exit

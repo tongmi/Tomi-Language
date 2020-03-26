@@ -20,7 +20,7 @@ void compile_out(std::string str,int mode) throw()
         std::cout<<str;
     }else
     {
-    std::cout<<str<<std::endl;
+        std::cout<<str<<std::endl;
     }
 }
 void command_out(char * str,std::string str_1) throw()
