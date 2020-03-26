@@ -53,7 +53,7 @@ int main_tomi(int argc,char *argv[]) throw()
     debug_api(PROGARM_DEBUG);
 
 
-    debug_info(argv[0]);
+    //debug_info(argv[0]);
 
 
     int ret=0;
@@ -155,7 +155,7 @@ int shell(const char *filename) throw()
 //wait 1.
     char shell_buf_c=0;
     size_t shell_buf_s_size=4;
-    
+    //compile_out("\n",857)
 
     FILE * tomi=NULL;
     int reet=0;
@@ -166,6 +166,7 @@ int shell(const char *filename) throw()
     }
     while (1)
     {
+    
         int sig_ret=0;
         shell_buf_s_size=4;
         char *shell_buf_s=(char*)malloc(2);
