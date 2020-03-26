@@ -67,7 +67,7 @@ int command_expression(string* bbuf,int* ret) throw()
 
         }*/
     }
-    debug_info(inum);//test
+    //debug_info(inum);//test
     
     char outpin[inum][com_max_len+1];
     char *pingmu[inum];
