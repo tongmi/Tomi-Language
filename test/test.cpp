@@ -2,7 +2,7 @@
 #include <string>
 #include <cstring>
 using namespace std;
-int main()
+/*int main()
 {
     string command_buf;
     getline(cin,command_buf);
@@ -28,4 +28,16 @@ int main()
     }
     
     
+}*/
+void test00()
+{
+    cout << "test0" <<endl;
+}
+void test0()
+{
+    cout << "test0" <<endl;
+}
+void test()
+{
+    cout << test0 <<endl;
 }
