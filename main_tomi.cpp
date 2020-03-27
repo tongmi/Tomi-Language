@@ -57,9 +57,10 @@ int main_tomi(int argc,char *argv[]) throw()
 
 
     int ret=0;
-    ifsystem();
+    
     if(argc==1)
     {
+        ifsystem();
         ret=shell();
         if(ret!=0)
         {

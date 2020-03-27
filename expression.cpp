@@ -111,7 +111,7 @@ int command_expression(string* bbuf,int* ret) throw()
         }*/
     }
     delete [] str;
-    
+
     return explanation(pingmu,ret);
 
 }
@@ -150,6 +150,13 @@ int explanation(char ** command,int* proret) throw()
         ret=;
     }
      */
+    if(strcmp(command[0],"")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+    }
     if(strcmp(command[0],"help")==0)
     {
         if(funmode==0)
