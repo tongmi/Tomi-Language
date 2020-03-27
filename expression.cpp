@@ -24,8 +24,20 @@ int explanation(char**,int*) throw();
 
 int command_expression(string* bbuf,int* ret) throw()
 {
+    /*for(size_t i = 0; 1; i++)
+    {
+        if (bbuf->at(i)==' ')
+        {
+            bbuf->erase(0,1);
+        }else
+        {
+            break;
+        }
+        
+        
+    }*/
     inum=1;
-    *ret=857;//记得改！！！！！
+    *ret=857;//记得改！！
     //命令参数 最大长度
     int com_len=0;
     /*if(os==0)
@@ -43,6 +55,7 @@ int command_expression(string* bbuf,int* ret) throw()
         warning("You cannot use spaces at the beginning!");
         return 0;
     }
+
     for (size_t i = 0; 1; i++)
     {
         if(str[i]=='\0')
@@ -69,6 +82,7 @@ int command_expression(string* bbuf,int* ret) throw()
     }
     //debug_info(inum);//test
     
+
     char outpin[inum][com_max_len+1];
     char *pingmu[inum];
     for (size_t i = 0; i < inum; i++)

@@ -167,7 +167,8 @@ int shell(const char *filename) throw()
     }
     while (1)
     {
-    
+        //857表示还有出现过，0表示正常
+        int has_spaces=857;
         int sig_ret=0;
         shell_buf_s_size=4;
         char *shell_buf_s=(char*)malloc(2);
@@ -180,7 +181,6 @@ int shell(const char *filename) throw()
                 sig_ret=-1;
                 string cbuf=shell_buf_s;
                 command_main(&cbuf,&reet);
-                //ret_error(ret);
                 break;
             }
             if(shell_buf_c=='\n')
@@ -192,9 +192,23 @@ int shell(const char *filename) throw()
                     break;
                 }
                 command_main(&ccbuf,&reet);
-                //ret_error(ret);
                 break;
             }
+            if(shell_buf_c==' ')
+            {
+                if(has_spaces==857)
+                {
+                    continue;
+                }
+            }
+            if(shell_buf_c=='\t')
+            {
+                if(has_spaces==857)
+                {
+                    continue;
+                }
+            }
+            has_spaces=0;
             shell_buf_s_size++;
             shell_buf_s=(char*)realloc(shell_buf_s,shell_buf_s_size);
             char shell_while_buf[2];
@@ -245,14 +259,7 @@ void ret_error(int ret) throw()
 }
 int command_main(string* buf,int* ret) throw()
 {
-    if(buf==NULL)
-    {
-        *ret=1;
-        //cout << *buf<< endl;
-        return 1;
-    }
     return command_expression(buf,ret);
-    
 }
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is windows ,3 is win32
 int ifsystem() throw()
