@@ -24,26 +24,10 @@ int explanation(char**,int*) throw();
 
 int command_expression(string* bbuf,int* ret) throw()
 {
-    /*for(size_t i = 0; 1; i++)
-    {
-        if (bbuf->at(i)==' ')
-        {
-            bbuf->erase(0,1);
-        }else
-        {
-            break;
-        }
-        
-        
-    }*/
     inum=1;
     *ret=857;//记得改！！
     //命令参数 最大长度
     int com_len=0;
-    /*if(os==0)
-    {
-        cout<<"TOMI:The program is runing in linux!"<<endl;
-    }*/
     int com_max_len=0;
     int last_space=-1;
     const char *com=bbuf->data();
@@ -77,11 +61,9 @@ int command_expression(string* bbuf,int* ret) throw()
         }
         /*if(str[i]=='\t')
         {
-
+            
         }*/
     }
-    //debug_info(inum);//test
-    
 
     char outpin[inum][com_max_len+1];
     char *pingmu[inum];
