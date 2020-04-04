@@ -1,3 +1,3 @@
 ./make.sh
-mv tomilang /usr/bin/
+mv ./tomilang /usr/bin/
 echo done.
