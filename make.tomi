@@ -1,3 +1,5 @@
+#!/usr/bin/tomilang
 compile g++ *.cpp -o tomilang
 echo Compiled.
 exit
+

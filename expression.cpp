@@ -39,7 +39,10 @@ int command_expression(string* bbuf,int* ret) throw()
         warning("You cannot use spaces at the beginning!");
         return 0;
     }
-
+    if(str[0]=='#')
+    {
+        return 0;
+    }
     for (size_t i = 0; 1; i++)
     {
         if(str[i]=='\0')
@@ -59,10 +62,6 @@ int command_expression(string* bbuf,int* ret) throw()
             }
             
         }
-        /*if(str[i]=='\t')
-        {
-            
-        }*/
     }
 
     char outpin[inum][com_max_len+1];
