@@ -2,6 +2,8 @@
 
 QQ:3343977167
 
+Need git and g++. 
+
 Run make.sh ,make.tomi or make.bat to compile!
 
 Run install.sh to install in Linux! 

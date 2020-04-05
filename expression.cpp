@@ -211,7 +211,7 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
 
-        //int numm=1;
+                     
         if(inum==2)
         {
             compile_out(command[1],0);
@@ -272,37 +272,3 @@ int explanation(char ** command,int* proret) throw()
     return ret;
 }
 
- /*///////////////////////////////////////////
-    /*if (writetmp(bbuf)==NULL)
-    {
-        return 2;
-    }
-
-    //read .tmp
-    FILE * test1=fopen(".tmp","r+");
-
-    
-    while(fscanf(test1,"%s",pbuf)==1)
-    {
-        inum++;
-        strcpy(outpin[inum-1],pbuf);
-    }
-    int copyi=inum;
-    /*while(inum>1)
-    {
-        inum--;
-        printf("%s\n",outpin[inum]);
-
-
-    }*//*
-    inum=copyi;
-    fclose(test1);
-    delete [] pbuf;
-    if(remove(".tmp")==EOF)
-    {
-        compile_out("Connot delete .tmp.");
-    }*/
-    ///////////////////////////////////////////////////////////////////////*/
-    //system("rm .tmp");
-    //rmtmp();
-    //rmdir
