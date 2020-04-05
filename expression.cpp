@@ -40,7 +40,7 @@ int command_expression(string* bbuf,int* ret) throw()
         return 0;
     }
     if(str[0]=='#')
-    {
+{
         return 0;
     }
     for (size_t i = 0; 1; i++)
@@ -151,6 +151,7 @@ int explanation(char ** command,int* proret) throw()
         {
             ret=0;
         }
+	return ret;
     }
     if(strcmp(command[0],"help")==0)
     {
@@ -159,21 +160,25 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
         command_out(command[0],"NULL");
+        return ret;
     }
     if(strcmp(command[0],"exit")==0)
     {
         *proret=0;
         ret=-1;
+	return ret;
     }
     if(strcmp(command[0],"fun")==0)
     {
         funmode=1;
         ret=1;
+	return ret;
     }
     if(strcmp(command[0],"endfun")==0)
     {
         funmode=0;
         ret=0;
+	return ret;
     }
     if(strcmp(command[0],"update_logs")==0)
     {
@@ -182,6 +187,7 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
         command_out(command[0],"NULL");
+	return ret;
     }
     if(strcmp(command[0],"compile")==0)
     {
@@ -202,7 +208,7 @@ int explanation(char ** command,int* proret) throw()
             strcat(compile_buf,command[i]);
         }
         system(compile_buf);
-
+	return ret;
     }
     if(strcmp(command[0],"echo")==0)
     {
@@ -248,7 +254,7 @@ int explanation(char ** command,int* proret) throw()
             
             }
         }
-        
+        return ret;
     }
 
 
