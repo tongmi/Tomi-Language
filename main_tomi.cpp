@@ -54,9 +54,6 @@ int main_tomi(int argc,char *argv[]) throw()
     debug_api(PROGARM_DEBUG);
 
 
-    //debug_info(argv[0]);
-
-
     int ret=0;
     
     if(argc==1)
@@ -182,7 +179,11 @@ int shell_files(const char *filename) throw()
                 strcat(shell_buf_s,"\0");
                 sig_ret=-1;
                 string cbuf=shell_buf_s;
-		if(cbuf=="exit")                                {                                                    sig_ret=-1;                                      break;                                       }
+		    if(cbuf=="exit")                                
+            {                                                    
+                sig_ret=-1;
+                break;
+            }
                 command_main(&cbuf,&reet);
                 break;
             }

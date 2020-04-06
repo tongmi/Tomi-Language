@@ -134,17 +134,6 @@ int explanation(char ** command,int* proret) throw()
     //cout << command[0];
     int ret=857;
     static int funmode=0;
-    /*
-     * 模板
-     * if(strcmp(command[0],"")==0)
-    {
-                if(funmode==0)
-        {
-            ret=0;
-        }
-        ret=;
-    }
-     */
     if(strcmp(command[0],"")==0)
     {
         if(funmode==0)
