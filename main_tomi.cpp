@@ -54,7 +54,6 @@ int main_tomi(int argc,char *argv[]) throw()
     signal(SIGINT, signalHandler);  //注册信号和退出函数 CTRL+c的退出
     debug_api(PROGARM_DEBUG);
 
-
     int ret=0;
     
     if(argc==1)
