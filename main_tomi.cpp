@@ -5,6 +5,7 @@
 #include <iostream>
 #include <csignal>
 #include <unistd.h>
+#include <thread>
 #include <stdlib.h>
 #include <cstring>
 #include <fstream> //   getline(test,command_buf);
@@ -195,11 +196,11 @@ int shell_files(const char *filename) throw()
                 {
                     break;
                 }
-		if(ccbuf=="exit")
-		{
-		    sig_ret=-1;
-		    break;
-		}
+		        if(ccbuf=="exit")
+		        {
+		            ig_ret=-1;
+		            break;
+		        }
                 command_main(&ccbuf,&reet);
                 break;
             }
