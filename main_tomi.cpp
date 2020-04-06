@@ -1,4 +1,5 @@
 /*
+ *
  * 头文件
  */
 #include <iostream>
@@ -36,7 +37,7 @@ int os=-1;//-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 int main_tomi(int,char**) throw(); //主函数
 void signalHandler(int) throw();//CTRL+c退出信号处理
 int shell() throw();//shell用户交互编程
-int shell(const char*) throw();//解释文件预处理
+int shell_files(const char*) throw();//解释文件预处理
 void ret_error(int) throw();//翻译错误代码
 int command_main(string*,int*) throw();//对接解释器的api
 int ifsystem() throw();//判断操作系统
@@ -77,7 +78,8 @@ int main_tomi(int argc,char *argv[]) throw()
             return 2;
         }else{
             //有文件
-            ret=shell(argv[num]);
+            ret=shell_files(argv[num]);
+	
             if(ret!=0)
             {
                 ret_error(ret);
@@ -151,7 +153,7 @@ int shell() throw()
     }
     return ret;
 }
-int shell(const char *filename) throw()
+int shell_files(const char *filename) throw()
 {
 //wait 1.
     char shell_buf_c=0;
@@ -180,6 +182,7 @@ int shell(const char *filename) throw()
                 strcat(shell_buf_s,"\0");
                 sig_ret=-1;
                 string cbuf=shell_buf_s;
+		if(cbuf=="exit")                                {                                                    sig_ret=-1;                                      break;                                       }
                 command_main(&cbuf,&reet);
                 break;
             }
@@ -191,6 +194,11 @@ int shell(const char *filename) throw()
                 {
                     break;
                 }
+		if(ccbuf=="exit")
+		{
+		    sig_ret=-1;
+		    break;
+		}
                 command_main(&ccbuf,&reet);
                 break;
             }
@@ -220,6 +228,7 @@ int shell(const char *filename) throw()
         free(shell_buf_s);
         if(sig_ret==-1)
         {
+	    reet=0;
             break;
         }
     }

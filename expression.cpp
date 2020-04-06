@@ -39,7 +39,10 @@ int command_expression(string* bbuf,int* ret) throw()
         warning("You cannot use spaces at the beginning!");
         return 0;
     }
-
+    if(str[0]=='#')
+{
+        return 0;
+    }
     for (size_t i = 0; 1; i++)
     {
         if(str[i]=='\0')
@@ -59,10 +62,6 @@ int command_expression(string* bbuf,int* ret) throw()
             }
             
         }
-        /*if(str[i]=='\t')
-        {
-            
-        }*/
     }
 
     char outpin[inum][com_max_len+1];
@@ -152,6 +151,7 @@ int explanation(char ** command,int* proret) throw()
         {
             ret=0;
         }
+	return ret;
     }
     if(strcmp(command[0],"help")==0)
     {
@@ -160,21 +160,25 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
         command_out(command[0],"NULL");
+        return ret;
     }
     if(strcmp(command[0],"exit")==0)
     {
         *proret=0;
         ret=-1;
+	return ret;
     }
     if(strcmp(command[0],"fun")==0)
     {
         funmode=1;
         ret=1;
+	return ret;
     }
     if(strcmp(command[0],"endfun")==0)
     {
         funmode=0;
         ret=0;
+	return ret;
     }
     if(strcmp(command[0],"update_logs")==0)
     {
@@ -183,6 +187,7 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
         command_out(command[0],"NULL");
+	return ret;
     }
     if(strcmp(command[0],"compile")==0)
     {
@@ -203,7 +208,7 @@ int explanation(char ** command,int* proret) throw()
             strcat(compile_buf,command[i]);
         }
         system(compile_buf);
-
+	return ret;
     }
     if(strcmp(command[0],"echo")==0)
     {
@@ -212,7 +217,7 @@ int explanation(char ** command,int* proret) throw()
             ret=0;
         }
 
-        //int numm=1;
+                     
         if(inum==2)
         {
             compile_out(command[1],0);
@@ -249,7 +254,7 @@ int explanation(char ** command,int* proret) throw()
             
             }
         }
-        
+        return ret;
     }
 
 
@@ -273,37 +278,3 @@ int explanation(char ** command,int* proret) throw()
     return ret;
 }
 
- /*///////////////////////////////////////////
-    /*if (writetmp(bbuf)==NULL)
-    {
-        return 2;
-    }
-
-    //read .tmp
-    FILE * test1=fopen(".tmp","r+");
-
-    
-    while(fscanf(test1,"%s",pbuf)==1)
-    {
-        inum++;
-        strcpy(outpin[inum-1],pbuf);
-    }
-    int copyi=inum;
-    /*while(inum>1)
-    {
-        inum--;
-        printf("%s\n",outpin[inum]);
-
-
-    }*//*
-    inum=copyi;
-    fclose(test1);
-    delete [] pbuf;
-    if(remove(".tmp")==EOF)
-    {
-        compile_out("Connot delete .tmp.");
-    }*/
-    ///////////////////////////////////////////////////////////////////////*/
-    //system("rm .tmp");
-    //rmtmp();
-    //rmdir
