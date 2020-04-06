@@ -40,7 +40,7 @@ int command_expression(string* bbuf,int* ret) throw()
         return 0;
     }
     if(str[0]=='#')
-{
+    {
         return 0;
     }
     for (size_t i = 0; 1; i++)
