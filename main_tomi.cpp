@@ -198,7 +198,7 @@ int shell_files(const char *filename) throw()
                 }
 		        if(ccbuf=="exit")
 		        {
-		            ig_ret=-1;
+		            sig_ret=-1;
 		            break;
 		        }
                 command_main(&ccbuf,&reet);

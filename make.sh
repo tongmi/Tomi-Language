@@ -1,2 +1,2 @@
-g++ *.cpp -finput-charset=UTF-8 -o tomilang
+g++ *.cpp -finput-charset=UTF-8 -lpthread -o tomilang
 echo Compiled.

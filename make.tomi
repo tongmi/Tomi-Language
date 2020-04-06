@@ -1,5 +1,5 @@
 #!/usr/bin/tomilang
-compile g++ *.cpp -o tomilang
+compile g++ *.cpp -finput-charset=UTF-8 -lpthread -o tomilang
 echo Compiled.
 exit
 
