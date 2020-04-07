@@ -73,9 +73,22 @@ int main_tomi(int argc,char *argv[]) throw()
         {
             error_out(ERROR_0x00000002);
             return 2;
-        }else{
+        }else if(num>1)
+        {
+            if(strcmp(argv[1],"-c")==0)
+            {
+                //跳转compile_main.cpp
+                ret=compile_main(argv[2]);
+            }else
+            {
+                error_out("Not found this command!");
+                ret=-1;
+            }
+            
+        }else
+        {
             //有文件
-            ret=shell_files(argv[num]);
+            ret=shell_files(argv[1]);
 	
             if(ret!=0)
             {

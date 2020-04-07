@@ -31,6 +31,8 @@ extern size_t inum;
 extern void warning(std::string) throw();
 //command_out
 extern void command_out(char * str,std::string str_1) throw();
+//compile.cpp
+extern int compile_main(char*) throw(); 
 
 
 
