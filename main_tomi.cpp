@@ -42,6 +42,7 @@ int shell_files(const char*) throw();//解释文件预处理
 void ret_error(int) throw();//翻译错误代码
 int command_main(string*,int*) throw();//对接解释器的api
 int ifsystem() throw();//判断操作系统
+extern int compile_main(char*) throw(); //compile.cpp
 extern int command_expression(string*,int*) throw();//命令解析，放在expression.cpp文件
 
 

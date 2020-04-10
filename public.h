@@ -23,16 +23,16 @@ extern void debug_info(std::string) throw();
 extern void debug_info(int) throw();
 //error out
 extern void error_out(std::string) throw();
-//cout
+//cout 857
 extern void compile_out(std::string,int) throw();
+extern void compile_out(std::string) throw();
 //com num
 extern size_t inum;
 //warning info
 extern void warning(std::string) throw();
 //command_out
 extern void command_out(char * str,std::string str_1) throw();
-//compile.cpp
-extern int compile_main(char*) throw(); 
+
 
 
 
