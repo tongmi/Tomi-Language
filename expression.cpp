@@ -245,7 +245,30 @@ int explanation(char ** command,int* proret) throw()
         }
         return ret;
     }
-
+    if(strcmp(command[0],"syscm")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        char compile_buf[com_length+inum];
+        for (size_t i = 1; i <= inum-1 ; i++)
+        {
+            if(i==1)
+            {
+                strcpy(compile_buf,"\0");
+            }else
+            {
+                strcat(compile_buf," ");
+            }
+            strcat(compile_buf,command[i]);
+        }
+        system(compile_buf);
+	return ret;
+    }
+    /*这里开始新代码*/
+    //变量容器
+    //自定义指令
 
 
 
