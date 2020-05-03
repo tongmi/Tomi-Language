@@ -245,7 +245,7 @@ int explanation(char ** command,int* proret) throw()
         }
         return ret;
     }
-    if(strcmp(command[0],"syscm")==0)
+    if(strcmp(command[0],"syscm")==0 ||strcmp(command[0],"系统命令")==0)
     {
         if(funmode==0)
         {
