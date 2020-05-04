@@ -9,7 +9,7 @@ using namespace std;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 size_t inum=0;//参数个数
 size_t com_length=0;
-string M_info="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)";
+string M_info="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
 string M1_info="梦琪真的是个很好的女孩纸，太喜欢她啦，一定要好好珍惜呀！！！\n我们情同姐妹，真的很喜欢她！！";
 
 //语法分析器
@@ -139,7 +139,7 @@ int explanation(char ** command,int* proret) throw()
     static int funmode=0;
     if(strcmp(command[0],"read")==0||strcmp(command[0],"mengqi")==0||strcmp(command[0],"chenmengqi")==0||strcmp(command[0],"jiemei")==0||strcmp(command[0],"haojiemei")==0||strcmp(command[0],"guimi")==0||strcmp(command[0],"haoguimi")==0||strcmp(command[0],"梦琪")==0||strcmp(command[0],"陈梦琪")==0||strcmp(command[0],"姐妹")==0||strcmp(command[0],"好姐妹")==0||strcmp(command[0],"闺蜜")==0||strcmp(command[0],"好闺蜜")==0)
     {
-        string info0="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)";
+        string info0="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
         string info1="梦琪真的是个很好的女孩纸，太喜欢她啦，一定要好好珍惜呀！！！\n我们情同姐妹，真的很喜欢她！！";
         string info_type=info0+info1;
         cout << info_type <<endl;
