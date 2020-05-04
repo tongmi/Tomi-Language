@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
-#include <conio.h>
+#include "include/linux/conio.h"
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
 #include "public.h"
