@@ -243,7 +243,7 @@ int shell_files(const char *filename) throw()
         free(shell_buf_s);
         if(sig_ret==-1)
         {
-	    reet=0;
+	        reet=0;
             break;
         }
     }
@@ -294,7 +294,7 @@ int ifsystem() throw()
  
        os=0;
  
-       info("The program is running in linux!");
+       info("The program is running in linux!(UTF-8)");
  
     #endif
  
@@ -302,7 +302,7 @@ int ifsystem() throw()
  
        os=1;
  
-       info("The program is running in unix!");
+       info("The program is running in unix!(UTF-8)");
  
     #endif
  
@@ -310,7 +310,7 @@ int ifsystem() throw()
  
        os=2;
  
-       info("The program is running in windows!");
+       info("The program is running in windows!(GBK)");
  
     #endif
  
@@ -318,7 +318,7 @@ int ifsystem() throw()
  
        os=3;
  
-       info("The program is running in win32!");
+       info("The program is running in win32!(GBK)");
  
     #endif
     if(-1==os){
@@ -330,6 +330,18 @@ int ifsystem() throw()
     return 0;
 
 }
+/*static char* U2G(const char* utf8) {
+  int len = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, NULL, 0);
+  wchar_t* wstr = new wchar_t[len + 1];
+  memset(wstr, 0, len + 1);
+  MultiByteToWideChar(CP_UTF8, 0, utf8, -1, wstr, len);
+  len = WideCharToMultiByte(CP_ACP, 0, wstr, -1, NULL, 0, NULL, NULL);
+  char* str = new char[len + 1];
+  memset(str, 0, len + 1);
+  WideCharToMultiByte(CP_ACP, 0, wstr, -1, str, len, NULL, NULL);
+  if (wstr) delete[] wstr;
+  return str;
+}*/
 /* 笔记 信号处理
  * SIGABRT	程序的异常终止，如调用 abort。
  * SIGFPE	错误的算术运算，比如除以零或导致溢出的操作。

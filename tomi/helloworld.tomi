@@ -1,3 +1,4 @@
 #!/usr/bin/tomilang
 print Hello World!
+pause
 exit
