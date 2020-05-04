@@ -2,10 +2,25 @@
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
-#include "include/linux/conio.h"
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
 #include "public.h"
+#ifdef linux
+    #include "include/linux/conio.h"
+#endif
+ 
+#ifdef _UNIX
+    #include "include/linux/conio.h"
+#endif
+ 
+#ifdef __WINDOWS_
+    #include <conio.h>
+#endif
+ 
+#ifdef _WIN32
+    #include <conio.h>
+#endif
+
 using namespace std;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 size_t inum=0;//参数个数
