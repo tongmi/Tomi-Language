@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
+#include <conio.h>
 #include <fstream> //   getline(test,command_buf);
 #include <string> //string str; getline(cin,str); data()函数返回指向自己的第一个字符的指针.  const char *str = str2.c_str();  //要加const，否则报错
 #include "public.h"
@@ -192,15 +193,31 @@ int explanation(char ** command,int* proret) throw()
         ret=0;
 	return ret;
     }
-    /*if(strcmp(command[0],"update_logs")==0)
+    if(strcmp(command[0],"pause")==0||strcmp(command[0],"按键")==0)
     {
         if(funmode==0)
         {
             ret=0;
         }
-        command_out(command[0],"NULL");
+        
+        compile_out("Press any key to continue...",857);
+        /*while(1){
+        if(kbhit()){
+        break;
+        }
+        }
+        }   */
+        getch();
+        compile_out("");
+        /*while(1)
+        {
+            if(kbhit())
+            {
+                break;
+            }
+        }*/
 	return ret;
-    }*/
+    }
     if(strcmp(command[0],"compile")==0)
     {
         if(funmode==0)
