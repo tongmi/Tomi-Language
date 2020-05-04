@@ -14,6 +14,8 @@ string M1_info="梦琪真的是个很好的女孩纸，太喜欢她啦，一定�
 
 //语法分析器
 int command_expression(string* buf,int* ret) throw();
+//文件处理
+extern int shell_files(const char*) throw();//解释文件预处理
 /*
 //写临时文件
 char* writetmp(string*) throw();
@@ -147,13 +149,29 @@ int explanation(char ** command,int* proret) throw()
 
 	    return 0;
     }
-    if(strcmp(command[0],"help")==0)
+    if(strcmp(command[0],"help")==0||strcmp(command[0],"update_logs")==0||strcmp(command[0],"帮助")==0)
     {
         if(funmode==0)
         {
             ret=0;
         }
         command_out(command[0],"read:It is important!");
+        return ret;
+    }
+    if(strcmp(command[0],"import")==0||strcmp(command[0],"导入")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        if(inum==1)
+        {
+            return ret;
+        }
+        if(shell_files(command[1])==2)
+        {
+            command_out(command[0],"Not found the file!");
+        }
         return ret;
     }
     if(strcmp(command[0],"exit")==0||strcmp(command[0],"退出")==0)
@@ -174,7 +192,7 @@ int explanation(char ** command,int* proret) throw()
         ret=0;
 	return ret;
     }
-    if(strcmp(command[0],"update_logs")==0)
+    /*if(strcmp(command[0],"update_logs")==0)
     {
         if(funmode==0)
         {
@@ -182,7 +200,7 @@ int explanation(char ** command,int* proret) throw()
         }
         command_out(command[0],"NULL");
 	return ret;
-    }
+    }*/
     if(strcmp(command[0],"compile")==0)
     {
         if(funmode==0)
@@ -256,6 +274,10 @@ int explanation(char ** command,int* proret) throw()
         {
             ret=0;
         }
+        if (inum==1)
+        {
+            return 0;
+        }
         char compile_buf[com_length+inum];
         for (size_t i = 1; i <= inum-1 ; i++)
         {
@@ -271,6 +293,32 @@ int explanation(char ** command,int* proret) throw()
         system(compile_buf);
 	return ret;
     }
+    if(strcmp(command[0],"echo")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        if (inum==1)
+        {
+            return 0;
+        }
+        char compile_buf[com_length+inum];
+        for (size_t i = 0; i <= inum-1 ; i++)
+        {
+            if(i==0)
+            {
+                strcpy(compile_buf,"\0");
+            }else
+            {
+                strcat(compile_buf," ");
+            }
+            strcat(compile_buf,command[i]);
+        }
+        system(compile_buf);
+	return ret;
+    }
+
     /*这里开始新代码*/
     //变量容器
     //自定义指令
