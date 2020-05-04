@@ -2,7 +2,7 @@
 #include <string>
 //INFO 
 void info(std::string str) throw();
-//out
+//out 857 was not endl
 void compile_out(std::string,int) throw();
 void compile_out(std::string) throw();
 //notfound
