@@ -1,3 +1,7 @@
+
+//梦琪触发器
+static bool Mengqi=false;
+
 //Information for systemos
 extern int os;
 //debug mode
