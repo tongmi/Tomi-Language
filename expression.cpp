@@ -199,7 +199,7 @@ int explanation(char ** command,int* proret) throw()
         system(compile_buf);
 	return ret;
     }
-    if(strcmp(command[0],"echo")==0)
+    if(strcmp(command[0],"print")==0 || strcmp(command[0],"打印")==0)
     {
         if(funmode==0)
         {
