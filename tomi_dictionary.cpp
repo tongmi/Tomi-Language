@@ -1,5 +1,5 @@
-#include <iostream>
-using namespace std;
+#define NULL 0LL
+typedef unsigned long long size_t;
 typedef dictionary dic;
 class dictionary
 {
