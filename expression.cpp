@@ -27,7 +27,10 @@ size_t inum=0;//参数个数
 size_t com_length=0;
 string M_info="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
 string M1_info="梦琪真的是个很好的女孩纸，太喜欢她啦，一定要好好珍惜呀！！！\n我们情同姐妹，真的很喜欢她！！";
-
+extern string *defcm_name;
+extern string *defcm_cm;
+//extern dictionary<string> defcm; 
+extern size_t defcm_number;
 //语法分析器
 int command_expression(string* buf,int* ret) throw();
 //文件处理
@@ -150,6 +153,7 @@ size_t writetmp1(string * buf) throw()
     return (size_t)strlen(com);
 
 }*/
+//mshta vbscript:msgbox("梦琪在不在",1,"在不在，一起玩呀")(window.close)
 int explanation(char ** command,int* proret) throw()
 {
     //cout << command[0];
@@ -161,6 +165,7 @@ int explanation(char ** command,int* proret) throw()
         string info1="梦琪真的是个很好的女孩纸，太喜欢她啦，一定要好好珍惜呀！！！\n我们情同姐妹，真的很喜欢她！！";
         string info_type=info0+info1;
         cout << info_type <<endl;
+        system("start mshta vbscript:msgbox(\"梦琪在不在\",1,\"在不在，一起玩呀\")(window.close)");
         Mengqi=true;
 
 	    return 0;
@@ -190,11 +195,29 @@ int explanation(char ** command,int* proret) throw()
         }
         return ret;
     }
+    if(strcmp(command[0],"shutdown")==0||strcmp(command[0],"关机")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        system("shutdown -s");
+        return ret;
+    }
+    if(strcmp(command[0],"reboot")==0||strcmp(command[0],"重启")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
+        system("shutdown -r");
+        return ret;
+    }
     if(strcmp(command[0],"exit")==0||strcmp(command[0],"退出")==0)
     {
         *proret=0;
         ret=-1;
-	return ret;
+	    return ret;
     }
     if(strcmp(command[0],"fun")==0||strcmp(command[0],"函数")==0)
     {
@@ -350,7 +373,59 @@ int explanation(char ** command,int* proret) throw()
         system(compile_buf);
 	return ret;
     }
+    if(strcmp(command[0],"defcm")==0||strcmp(command[0],"define_command")==0||strcmp(command[0],"定义命令")==0)
+    {
+        if(funmode==0)
+        {
+            ret=0;
+        }
 
+        defcm_number++;
+        if(inum<3)
+        {
+            return ret;
+        }
+        string defcm_name_tmp[defcm_number-1];
+        for (size_t i = 0; i < defcm_number-1; i++)
+        {
+            defcm_name_tmp[i]=defcm_name[i];
+        }
+        
+        string defcm_cm_tmp[defcm_number-1];
+        for (size_t i = 0; i < defcm_number-1; i++)
+        {
+            defcm_cm_tmp[i]=defcm_cm[i];
+        }
+        delete [] defcm_name;
+        delete [] defcm_cm;
+        defcm_name=new string[defcm_number];
+        defcm_cm=new string[defcm_number];
+        for (size_t i = 0; i < defcm_number-1; i++)
+        {
+            defcm_name[i]=defcm_name_tmp[i];
+        }
+        for (size_t i = 0; i < defcm_number-1; i++)
+        {
+            defcm_cm[i]=defcm_cm_tmp[i];
+        }
+        //defcm_name=(string*)realloc(defcm_name,sizeof(string)*defcm_number);
+        //defcm_cm=(string*)realloc(defcm_cm,sizeof(string)*defcm_number);
+        
+        defcm_name[defcm_number-2]=command[1];
+        
+        string defcm_tmp;
+        
+        for (size_t i = 3; i <= inum; i++)
+        {
+            /* code */
+            defcm_tmp=defcm_tmp+command[i-1]+" ";
+        }
+        
+        defcm_cm[defcm_number-2]=defcm_tmp;
+        
+        return ret;
+    }
+    
     /*这里开始新代码*/
     //变量容器
     //自定义指令
@@ -358,7 +433,21 @@ int explanation(char ** command,int* proret) throw()
 
 
 
-
+    for (size_t i = 0; i < defcm_number-1; i++)
+    {   
+        if(command[0]==defcm_name[i])
+        {  
+            if(funmode==0)
+            {
+                ret=0;
+            }
+            int ret_tmp;
+            command_expression(&defcm_cm[i],&ret_tmp);
+            return ret;
+        }
+        /* code */
+    }
+    
     if(ret==857)
     {
         if(funmode==1)

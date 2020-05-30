@@ -9,7 +9,7 @@ extern int os;
 //progarm mod
 #define PROGRAM_MODE "default"
 //progarm name
-#define PROGRAM_NAME "Tomi"
+#define PROGRAM_NAME "tomi"
 //program version
 #define PROGRAM_VERSION "0.0.0.1-test0"
 //input fun
@@ -36,7 +36,8 @@ extern size_t inum;
 extern void warning(std::string) throw();
 //command_out
 extern void command_out(char * str,std::string str_1) throw();
-
+//dictionary
+//#include "tomi_framework_dictionary.cpp"
 
 
 

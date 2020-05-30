@@ -30,6 +30,11 @@ using namespace std;
 //char *command=NULL;//执行语句   暂时弃用
 //int *command_int=NULL;//执行语句(INT)   暂时弃用
 string command_buf;//命令缓存
+//定义命令缓存
+string *defcm_name;
+string *defcm_cm;
+//dictionary<string> defcm(defcm_name,defcm_cm); 
+size_t defcm_number=1;
 int os=-1;//-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 //expression expression;//解释器对象
 /*
@@ -54,7 +59,11 @@ int main_tomi(int argc,char *argv[]) throw()
     //cout << argv[1]<<endl;
     signal(SIGINT, signalHandler);  //注册信号和退出函数 CTRL+c的退出
     debug_api(PROGARM_DEBUG);
-
+    /*defcm_name=new string[1];
+    defcm_cm=new string[1];*/
+    defcm_name=new string[1];
+    defcm_cm=new string[1];
+    //dictionary<string> defcm(defcm_name,defcm_cm); 
     int ret=0;
     
     if(argc==1)
@@ -324,7 +333,6 @@ int ifsystem() throw()
     if(-1==os){
  
         info("No OS Defined ,I do not know what the os is!");
- 
     }
  
     return 0;
