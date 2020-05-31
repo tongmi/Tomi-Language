@@ -131,7 +131,6 @@ int command_expression(string* bbuf,int* ret) throw()
         }*/
     }
     delete [] str;
-    cout<<"\ninto\n";
     return explanation(pingmu,ret);
 
 }
@@ -160,6 +159,7 @@ int explanation(char ** command,int* proret) throw()
     //cout << command[0];
     int ret=857;
     static int funmode=0;
+    cout<<"\ninto\n";
     if(strcmp(command[0],"read")==0||strcmp(command[0],"mengqi")==0||strcmp(command[0],"chenmengqi")==0||strcmp(command[0],"jiemei")==0||strcmp(command[0],"haojiemei")==0||strcmp(command[0],"guimi")==0||strcmp(command[0],"haoguimi")==0||strcmp(command[0],"梦琪")==0||strcmp(command[0],"陈梦琪")==0||strcmp(command[0],"姐妹")==0||strcmp(command[0],"好姐妹")==0||strcmp(command[0],"闺蜜")==0||strcmp(command[0],"好闺蜜")==0)
     {
         string info0="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
