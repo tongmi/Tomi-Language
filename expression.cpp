@@ -22,6 +22,7 @@
 #endif
 
 using namespace std;
+typedef unsigned long long size_t;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 size_t inum=0;//参数个数
 size_t com_length=0;
