@@ -193,6 +193,7 @@ int explanation(char ** command,int* proret) throw()
         
         bool importmode=true;
         size_t i=0;
+        cout<<command[1];
         while (importmode==true)
         {
             switch (i)
