@@ -1,8 +1,6 @@
-
-#include "tomi_framework.cpp"
-typedef unsigned long long size_t;
+#include <iostream>
 template <class T>
-class dictionary : public user
+class dictionary
 {
     public:
     dictionary(T * d_first_array,T * d_last_array)
