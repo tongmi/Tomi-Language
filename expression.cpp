@@ -434,6 +434,7 @@ int explanation(char ** command,int* proret) throw()
     }
     if(strcmp(command[0],"defcm")==0||strcmp(command[0],"define_command")==0||strcmp(command[0],"定义命令")==0)
     {
+        cout<<"\ninto\n";
         if(funmode==0)
         {
             ret=0;
@@ -444,7 +445,7 @@ int explanation(char ** command,int* proret) throw()
         }
         defcm_number++;
         
-        
+        cout<<"\ninto\n";
         string defcm_name_tmp[defcm_number-1];
         for (size_t i = 0; i < defcm_number-1; i++)
         {
@@ -482,7 +483,7 @@ int explanation(char ** command,int* proret) throw()
         }
         
         defcm_cm[defcm_number-2]=defcm_tmp;
-        
+        cout<<"\ninto\n";
         return ret;
     }
     
