@@ -251,7 +251,7 @@ int shell_files(const char *filename) throw()
             strcat(shell_buf_s,shell_while_buf);
             
         }
-        free(shell_buf_s);
+        //free(shell_buf_s);
         if(sig_ret==-1)
         {
 	        reet=0;
