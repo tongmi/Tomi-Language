@@ -199,7 +199,7 @@ int explanation(char ** command,int* proret) throw()
             {
             case 2:
                 char temp[sizeof(command[1])+1];
-
+                strcpy(temp,"\0");
                 strcpy(temp,command[1]);
                 if(shell_files(temp)!=2)
                 {
@@ -208,6 +208,7 @@ int explanation(char ** command,int* proret) throw()
                 break;
             case 0:
                 char temep[sizeof(command[1])+10];
+                strcpy(temep,"\0");
                 strcpy(temep,"import/");
                 strcat(temep,command[1]);
                 if(shell_files(temep)!=2)
@@ -222,6 +223,7 @@ int explanation(char ** command,int* proret) throw()
                 }
                 size_t tmtest=path.length()+4;
                 char temp[tmtest];
+                strcpy(temp,"\0");
                 strcpy(temp,path.c_str());
                 size_t times = 0;
                 for (size_t i = 0; i < tmtest; i++)
