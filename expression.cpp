@@ -379,12 +379,13 @@ int explanation(char ** command,int* proret) throw()
         {
             ret=0;
         }
-
-        defcm_number++;
         if(inum<3)
         {
             return ret;
         }
+        defcm_number++;
+        
+        
         string defcm_name_tmp[defcm_number-1];
         for (size_t i = 0; i < defcm_number-1; i++)
         {
