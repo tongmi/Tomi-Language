@@ -56,7 +56,7 @@ int command_expression(string* bbuf,int* ret) throw()
     int com_max_len=0;
     int last_space=-1;
     const char *com=bbuf->data();
-    char *str =new char[strlen(com)+1];//缓存
+    char *str =new char[strlen(com)+4];//缓存
     com_length=strlen(com)+1;
     strcpy(str,com);
     if(str[0]==' ')
@@ -89,7 +89,7 @@ int command_expression(string* bbuf,int* ret) throw()
         }
     }
 
-    char outpin[inum][com_max_len+1];
+    char outpin[inum][com_max_len+2];
     char *pingmu[inum];
     for (size_t i = 0; i < inum; i++)
     {
@@ -159,7 +159,7 @@ int explanation(char ** command,int* proret) throw()
     //cout << command[0];
     int ret=857;
     static int funmode=0;
-    cout<<"\ninto\n";
+    
     if(strcmp(command[0],"read")==0||strcmp(command[0],"mengqi")==0||strcmp(command[0],"chenmengqi")==0||strcmp(command[0],"jiemei")==0||strcmp(command[0],"haojiemei")==0||strcmp(command[0],"guimi")==0||strcmp(command[0],"haoguimi")==0||strcmp(command[0],"梦琪")==0||strcmp(command[0],"陈梦琪")==0||strcmp(command[0],"姐妹")==0||strcmp(command[0],"好姐妹")==0||strcmp(command[0],"闺蜜")==0||strcmp(command[0],"好闺蜜")==0)
     {
         string info0="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
@@ -193,7 +193,6 @@ int explanation(char ** command,int* proret) throw()
         
         bool importmode=true;
         size_t i=0;
-        cout<<command[1];
         while (importmode==true)
         {
             switch (i)
@@ -202,7 +201,7 @@ int explanation(char ** command,int* proret) throw()
                 char temp[sizeof(command[1])+1];
                 strcpy(temp,"\0");
                 strcpy(temp,command[1]);
-                cout<<"\ninto\n";
+                
                 if(shell_files(temp)!=2)
                 {
                     importmode=false;
@@ -213,7 +212,7 @@ int explanation(char ** command,int* proret) throw()
                 strcpy(temep,"\0");
                 strcpy(temep,"import/");
                 strcat(temep,command[1]);
-                cout<<"\ninto\n";
+                
                 if(shell_files(temep)!=2)
                 {
                     importmode=false;
@@ -239,7 +238,7 @@ int explanation(char ** command,int* proret) throw()
                 temp[times+1]='\0';
                 temp[tmtest-1]='0';
                 strcat(temp,command[1]);
-                cout<<"\ninto\n";
+                
                 if(shell_files(temp)!=2)
                 {
                     importmode=false;
@@ -438,7 +437,7 @@ int explanation(char ** command,int* proret) throw()
     }
     if(strcmp(command[0],"defcm")==0||strcmp(command[0],"define_command")==0||strcmp(command[0],"定义命令")==0)
     {
-        cout<<"\ninto\n";
+        
         if(funmode==0)
         {
             ret=0;
@@ -449,7 +448,7 @@ int explanation(char ** command,int* proret) throw()
         }
         defcm_number++;
         
-        cout<<"\ninto\n";
+        
         string defcm_name_tmp[defcm_number-1];
         for (size_t i = 0; i < defcm_number-1; i++)
         {
@@ -487,7 +486,7 @@ int explanation(char ** command,int* proret) throw()
         }
         
         defcm_cm[defcm_number-2]=defcm_tmp;
-        cout<<"\ninto\n";
+        
         return ret;
     }
     
