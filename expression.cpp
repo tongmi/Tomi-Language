@@ -190,7 +190,7 @@ int explanation(char ** command,int* proret) throw()
         {
             return ret;
         }
-        cout<<"\ninto\n";
+        
         bool importmode=true;
         size_t i=0;
         while (importmode==true)
@@ -201,6 +201,7 @@ int explanation(char ** command,int* proret) throw()
                 char temp[sizeof(command[1])+1];
                 strcpy(temp,"\0");
                 strcpy(temp,command[1]);
+                cout<<"\ninto\n";
                 if(shell_files(temp)!=2)
                 {
                     importmode=false;
@@ -211,6 +212,7 @@ int explanation(char ** command,int* proret) throw()
                 strcpy(temep,"\0");
                 strcpy(temep,"import/");
                 strcat(temep,command[1]);
+                cout<<"\ninto\n";
                 if(shell_files(temep)!=2)
                 {
                     importmode=false;
@@ -236,6 +238,7 @@ int explanation(char ** command,int* proret) throw()
                 temp[times+1]='\0';
                 temp[tmtest-1]='0';
                 strcat(temp,command[1]);
+                cout<<"\ninto\n";
                 if(shell_files(temp)!=2)
                 {
                     importmode=false;
