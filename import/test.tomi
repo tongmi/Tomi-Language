@@ -1,0 +1,1 @@
+defcm mq syscm start mshta vbscript:msgbox("梦琪在不在",1,"在不在，一起玩呀")(window.close)

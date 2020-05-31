@@ -25,6 +25,7 @@ using namespace std;
 //-1 is unkonws os  0 is linux , 1 is unix , 2 is win32 ,3 is windows
 size_t inum=0;//参数个数
 size_t com_length=0;
+extern string path;
 string M_info="strcmp(command[0],\"read\")==0||strcmp(command[0],\"mengqi\")==0||strcmp(command[0],\"chenmengqi\")==0||strcmp(command[0],\"jiemei\")==0||strcmp(command[0],\"haojiemei\")==0||strcmp(command[0],\"guimi\")==0||strcmp(command[0],\"haoguimi\")==0||strcmp(command[0],\"梦琪\")==0||strcmp(command[0],\"陈梦琪\")==0||strcmp(command[0],\"姐妹\")==0||strcmp(command[0],\"好姐妹\")==0||strcmp(command[0],\"闺蜜\")==0||strcmp(command[0],\"好闺蜜\")==0)\n";
 string M1_info="梦琪真的是个很好的女孩纸，太喜欢她啦，一定要好好珍惜呀！！！\n我们情同姐妹，真的很喜欢她！！";
 extern string *defcm_name;
@@ -189,10 +190,65 @@ int explanation(char ** command,int* proret) throw()
         {
             return ret;
         }
-        if(shell_files(command[1])==2)
+        
+        bool importmode=true;
+        size_t i=0;
+        while (importmode==true)
         {
-            command_out(command[0],"Not found the file!");
+            switch (i)
+            {
+            case 2:
+                char temp[sizeof(command[1])+1];
+
+                strcpy(temp,command[1]);
+                if(shell_files(temp)!=2)
+                {
+                    importmode=false;
+                }
+                break;
+            case 0:
+                char temep[sizeof(command[1])+10];
+                strcpy(temep,"import/");
+                strcat(temep,command[1]);
+                if(shell_files(temep)!=2)
+                {
+                    importmode=false;
+                }
+                break;
+            case 1:{
+                if( path.empty() )
+                {
+                    break;
+                }
+                size_t tmtest=path.length()+4;
+                char temp[tmtest];
+                strcpy(temp,path.c_str());
+                size_t times = 0;
+                for (size_t i = 0; i < tmtest; i++)
+                {
+                    if(temp[i]=='/'||temp[i]=='\\')
+                    {
+                        times=i;
+                    }
+                }
+                temp[times+1]='\0';
+                strcat(temp,command[1]);
+                if(shell_files(temp)!=2)
+                {
+                    importmode=false;
+                }
+                break;
+                }
+            default:
+                command_out(command[0],"Not found the file!");
+                importmode=false;
+                break;
+            }
+            
+            i++;
         }
+        
+        
         return ret;
     }
     if(strcmp(command[0],"shutdown")==0||strcmp(command[0],"关机")==0)

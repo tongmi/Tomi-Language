@@ -30,6 +30,7 @@ using namespace std;
 //char *command=NULL;//执行语句   暂时弃用
 //int *command_int=NULL;//执行语句(INT)   暂时弃用
 string command_buf;//命令缓存
+string path;
 //定义命令缓存
 string *defcm_name;
 string *defcm_cm;
@@ -98,6 +99,7 @@ int main_tomi(int argc,char *argv[]) throw()
         }else
         {
             //有文件
+            path=argv[1];
             ret=shell_files(argv[1]);
 	
             if(ret!=0)
@@ -202,29 +204,29 @@ int shell_files(const char *filename) throw()
                 strcat(shell_buf_s,"\0");
                 sig_ret=-1;
                 string cbuf=shell_buf_s;
-		    if(cbuf=="exit")                                
-            {                                                    
-                sig_ret=-1;
-                break;
-            }
-                command_main(&cbuf,&reet);
-                break;
-            }
-            if(shell_buf_c=='\n')
-            {
-                strcat(shell_buf_s,"\0");
-                string ccbuf=shell_buf_s;
-                if(ccbuf=="\0")
-                {
+		        if(cbuf=="exit")                                
+                {                                                    
+                    sig_ret=-1;
                     break;
                 }
-		        if(ccbuf=="exit")
-		        {
-		            sig_ret=-1;
-		            break;
-		        }
-                command_main(&ccbuf,&reet);
-                break;
+                    command_main(&cbuf,&reet);
+                    break;
+                }
+                if(shell_buf_c=='\n')
+                {
+                    strcat(shell_buf_s,"\0");
+                    string ccbuf=shell_buf_s;
+                    if(ccbuf=="\0")
+                    {
+                        break;
+                    }
+		            if(ccbuf=="exit")
+		            {
+		                sig_ret=-1;
+		                break;
+		            }
+                    command_main(&ccbuf,&reet);
+                    break;
             }
             if(shell_buf_c==' ')
             {
