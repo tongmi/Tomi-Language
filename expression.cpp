@@ -234,6 +234,7 @@ int explanation(char ** command,int* proret) throw()
                     }
                 }
                 temp[times+1]='\0';
+                temp[tmtest-1]='0';
                 strcat(temp,command[1]);
                 if(shell_files(temp)!=2)
                 {
