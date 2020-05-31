@@ -131,7 +131,7 @@ int command_expression(string* bbuf,int* ret) throw()
         }*/
     }
     delete [] str;
-
+    cout<<"\ninto\n";
     return explanation(pingmu,ret);
 
 }
