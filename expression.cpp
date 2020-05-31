@@ -89,7 +89,7 @@ int command_expression(string* bbuf,int* ret) throw()
         }
     }
 
-    char outpin[inum][com_max_len+2];
+    char outpin[inum][strlen(com)+4];
     char *pingmu[inum];
     for (size_t i = 0; i < inum; i++)
     {
