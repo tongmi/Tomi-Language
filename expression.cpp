@@ -190,7 +190,7 @@ int explanation(char ** command,int* proret) throw()
         {
             return ret;
         }
-        
+        cout<<"\ninto\n";
         bool importmode=true;
         size_t i=0;
         while (importmode==true)
